@@ -1,0 +1,142 @@
+创建一个项目
+npm init vue@latest 插件volar 实施检查代码错误  npm i axios vuex -S 
+vuex 全局数据存储
+
+关于element-ui组件库的 按需导入//自动导入
+1. npm install element-plus --save
+2. npm install -D unplugin-vue-components unplugin-auto-import(安装这两个插件)
+3. 在vite.config.js中配置
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import AutoImport from 'unplugin-auto-import/vite'
+export default defineConfig({
+  plugins: [
+    vue(),
+    Components({
+      resolvers: [ElementPlusResolver()],
+    }),
+    AutoImport({ resolvers: [ElementPlusResolver()] }),
+  ]
+})
+
+
+样式重置 normalize.css
+1. npm install normalize.css -S
+2. 在main.js中引入 import 'normalize.css'
+
+npm i nprogress -S  //进度条
+require.js中
+//进度条和进度条样式引入
+import nprogress from "nprogress";
+import "nprogress/nprogress.css";
+
+
+
+仓库搭建
+npm i vuex -S
+store 文件夹下面
+import { createStore } from "vuex";
+const store = createStore({
+  modules: {},
+});
+export default store;
+
+main.js中 import store from "./store"; app.use(store);
+
+
+图标使用
+1.npm install font-awesome --save
+main.js中引入
+2.import 'font-awesome/css/font-awesome.min.css'
+
+
+//用于将 Vuex 模块中的 actions 映射到组件的 methods 中
+写在methods中
+...mapActions("auth", ["loginAction"]),
+mapMutations同理
+把删除用户信息的方法映射到组件方法中
+...mapMutations("auth", { delUserinfo: DELETE_AUTH_INFO }),
+
+//mapState 是一个辅助函数，
+主要作用是将 Vuex 存储（store）中的 state 映射到组件的计算属性（computed）中
+写在computed中
+...mapState("auth", ["userInfo"]),
+
+
+const fruits = ['苹果', '香蕉', '橙子', '葡萄'];
+
+// 使用 forEach 遍历数组
+fruits.forEach(function(fruit, index) {
+  console.log(`第 ${index + 1} 个水果：${fruit}`);
+});
+
+第 1 个水果：苹果
+第 2 个水果：香蕉
+第 3 个水果：橙子
+第 4 个水果：葡萄
+
+
+ <el-icon> <component :is="item.icon"></component></el-icon>
+
+
+ //消息弹窗
+ get默认不弹窗
+ post和失败时弹窗
+
+ //echarts
+ npm install echarts --save
+
+
+ 配置插件
+ import * as echarts from "echarts"; // 引入echarts
+
+export const myPlugin = {
+  install(app, option) {
+    app.config.globalProperties.$echarts = echarts;
+  },
+};
+
+main.js中引入
+import myPlugin from "./plugins/myPlugin";
+app.use(myPlugin);
+
+
+本质上，只要需要「父组件数据变化时子组件同步更新，子组件操作时父组件数据同步更新」，
+就需要用到 v-model（父组件语法糖）和 modelValue（子组件接收值的载体）。
+
+当用户确认删除后，会调用 deleteBanner 方法
+使用 Promise 的 .then() 和 .catch() 来处理删除操作的结果
+只有当删除操作成功时，才会显示"删除成功"的消息
+
+
+    //4.将图片转为base64
+      this.getBase64(data.file).then((res) => {
+        this.imgForm.img = res;
+      });
+    },
+    
+    getBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        let fileResult = "";
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+          fileResult = reader.result;
+        };
+        reader.onerror = (error) => reject(error);
+        reader.onloadend = () => {
+          resolve(fileResult);
+          //返回这个值
+        };
+      });
+    },
+
+const obj = { name: '张三', age: 20, hobbies: ['篮球', '游戏'] };
+const str = qs.stringify(obj); 
+// 结果："name=张三&age=20&hobbies%5B0%5D=篮球&hobbies%5B1%5D=游戏"
+// （实际是 URL 编码后的格式，解码后为 "name=张三&age=20&hobbies[0]=篮球&hobbies[1]=游戏"）
+
+
+const str = "name=张三&age=20&hobbies[0]=篮球&hobbies[1]=游戏";
+const obj = qs.parse(str); 
+// 结果：{ name: '张三', age: '20', hobbies: ['篮球', '游戏'] }
