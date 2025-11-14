@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h2>图表1</h2>
-    <div class="chart">图表的容器</div>
+    <h2>销量</h2>
+    <div id="chart"></div>
   </div>
 </template>
 
@@ -11,19 +11,31 @@ export default {
   name: "itemone",
   created() {
     this.getOneData();
-    console.log("1", this);
   },
   methods: {
     async getOneData() {
       try {
         const res = await getOneDataApi();
-        console.log(res);
+        const data = res.data.chartData;
+        console.log(data);
+        this.$myChart.hbar("chart", data);
       } catch (error) {
-        // console.log(error);
+        console.log(error);
       }
     },
   },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+#chart {
+  height: 4.5rem;
+}
+h2 {
+  height: 0.6rem;
+  color: #fff;
+  line-height: 0.6rem;
+  font-size: 0.25rem;
+  text-align: center;
+}
+</style>
