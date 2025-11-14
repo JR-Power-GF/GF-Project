@@ -18,6 +18,11 @@ const router = createRouter({
       name: "visulation",
       component: () => import("@/views/Visulation/index.vue"),
     },
+    {
+      path: "/chat",
+      name: "chat",
+      component: () => import("@/views/AiChat/index.vue"),
+    },
   ],
 });
 
