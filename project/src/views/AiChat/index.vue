@@ -44,6 +44,10 @@ export default {
 .el-dialog {
   border-radius: 20px;
   height: 852px;
+  background-image: url("@/assets/image/aibg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .el-dialog__header {
   padding: 0px !important;
