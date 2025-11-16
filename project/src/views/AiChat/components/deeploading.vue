@@ -1,3 +1,9 @@
+<script>
+export default {
+  name: "Loading",
+};
+</script>
+
 <template>
   <div class="com__box">
     <!-- 引入thinking的圆形旋转动画 -->
@@ -12,7 +18,7 @@
       <div></div>
     </div>
     <!-- 文字内容 -->
-    <span class="text">正在思考中</span>
+    稍等让我思考下
     <!-- 保留原有的三个小球动画 -->
     <div class="loading">
       <div></div>
@@ -22,26 +28,19 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "Loading",
-};
-</script>
-
 <style scoped>
 .com__box {
   display: flex;
   align-items: center;
   background: linear-gradient(133deg, #f3eeff 0%, #eef6ff 100%);
-  max-width: 202px;
-  height: 60px;
+  max-width: 528px; /* 扩大容器宽度以容纳新增动画 */
+  height: 37px;
   border-radius: 16px;
-  padding: 16px;
   font-weight: bold;
   font-size: 18px;
   color: #303133;
-  gap: 12px;
-  line-height: 16px; /* 新增：让文字垂直居中 */
+  gap: 12px; /* 元素间间距 */
+  border-bottom: #d9d9d9 1px solid;
 }
 
 /* 整合thinking的圆形旋转动画样式 */
@@ -49,7 +48,6 @@ export default {
   position: relative;
   width: 16px;
   height: 16px;
-  margin-top: -1px;
 }
 
 .loading-circle > div {
@@ -59,9 +57,6 @@ export default {
   background-color: #186df5;
   border-radius: 50%;
   animation: circle-rotate 1.2s linear infinite;
-}
-.text {
-  white-space: nowrap; /* 核心属性：禁止文字换行 */
 }
 
 .loading-circle > div:nth-child(1) {
@@ -135,8 +130,7 @@ export default {
 }
 
 .loading {
-  display: flex; /* 改为flex布局，方便水平对齐 */
-  align-items: center; /* 垂直居中 */
+  display: block;
   font-size: 0;
   color: #000;
 }
@@ -154,13 +148,13 @@ export default {
 
 .loading {
   width: 45px;
-  height: 16px; /* 调整：与圆形动画高度一致 */
+  height: 14px;
 }
 
 .loading > div {
   width: 8px;
   height: 8px;
-  margin: 4px; /* 调整：使总高度为16px */
+  margin: 3px;
   border-radius: 100%;
   animation: ball-beat 0.7s -0.15s infinite linear;
 }

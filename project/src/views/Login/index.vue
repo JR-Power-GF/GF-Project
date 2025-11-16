@@ -1,6 +1,10 @@
 <template>
   <div class="app_login">
-    <el-card class="box_card" header="后台管理系统" shadow="hover">
+    <el-button class="ai_start" type="primary" @click="openAiChatbotDialog"
+      >AI聊天窗口</el-button
+    >
+    <AiChatbotDialog ref="aiChatbotDialog" />
+    <el-card class="box_card" header="高放后台管理系统" shadow="hover">
       <el-form
         :model="loginForm"
         status-icon
@@ -27,8 +31,12 @@
 </template>
 
 <script>
+import AiChatbotDialog from "@/views/AiChat/index.vue";
 export default {
   name: "Login",
+  components: {
+    AiChatbotDialog,
+  },
   data() {
     var validateUsername = (rule, value, callback) => {
       if (value === "") {
@@ -56,6 +64,10 @@ export default {
     };
   },
   methods: {
+    openAiChatbotDialog() {
+      this.$refs.aiChatbotDialog.dialogVisible = true;
+      // 通过ref使AiChatbotDialog中的dialogVisible属性为true
+    },
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
@@ -83,6 +95,11 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  .ai_start {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+  }
 }
 .box_card {
   width: 460px;

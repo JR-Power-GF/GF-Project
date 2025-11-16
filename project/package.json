@@ -18,7 +18,9 @@
     "lib-flexible": "^0.3.2",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
+    "qs": "^6.14.0",
     "sass": "^1.93.3",
+    "sse.js": "^2.7.2",
     "vue": "^3.5.22",
     "vue-router": "^4.6.3",
     "vuex": "^4.1.0"
