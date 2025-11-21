@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h2>销量</h2>
-    <div id="chart"></div>
+    <h2>销量总量</h2>
+    <div id="chart-one"></div>
   </div>
 </template>
 
@@ -18,7 +18,7 @@ export default {
         const res = await getOneDataApi();
         const data = res.data.chartData;
         console.log(data);
-        this.$myChart.hbar("chart", data);
+        this.$myChart.hbar("chart-one", data);
       } catch (error) {
         console.log(error);
       }
@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#chart {
+#chart-one {
   height: 4.5rem;
 }
 h2 {

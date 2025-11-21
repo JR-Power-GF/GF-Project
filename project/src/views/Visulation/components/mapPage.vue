@@ -18,9 +18,9 @@ export default {
   methods: {
     async getChinaData() {
       try {
-        const res = await axios.get("http://localhost:5173/map/china.json");
-        this.chinaData = res;
-        this.$myChart.map("map", this.chinaData.data);
+        const res = await axios.get("/map/china.json");
+        this.chinaData = res.data;
+        this.$myChart.map("map", this.chinaData);
       } catch (error) {
         console.log(error);
       }

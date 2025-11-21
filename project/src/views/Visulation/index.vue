@@ -13,7 +13,7 @@
         </itemPage>
       </section>
       <section class="itemcenter">
-        <h2>地图展示</h2>
+        <!-- <h2>地图展示</h2> -->
         <mapPage></mapPage>
       </section>
       <section class="itemright">
