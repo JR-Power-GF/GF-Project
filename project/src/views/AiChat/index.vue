@@ -8,11 +8,14 @@
       append-to-body
       :before-close="handleClose"
     >
-      <el-container class="ai-container">
-        <!-- <ai-folder ref="aiFolderRef"></ai-folder> -->
-        <el-main width="1032px">
-          <ai-chatbox></ai-chatbox>
-        </el-main>
+      <el-container class="ai-dialog-container">
+        <ai-folder></ai-folder>
+        <el-container class="ai-container">
+          <!-- <ai-folder ref="aiFolderRef"></ai-folder> -->
+          <el-main width="1032px">
+            <ai-chatbox @closeDialog="handleClose"></ai-chatbox>
+          </el-main>
+        </el-container>
       </el-container>
     </el-dialog>
     <!-- <ai-history-news ref="aiHistoryNewsDialog"></ai-history-news> -->
@@ -21,10 +24,12 @@
 
 <script>
 import aiChatbox from "./aiChatbox.vue";
+import aiFolder from "./components/Aside.vue";
 export default {
   name: "AiChatbotDialog",
   components: {
     aiChatbox,
+    aiFolder,
   },
   data() {
     return {
@@ -40,7 +45,10 @@ export default {
 </script>
 
 <style lang="scss">
-//挂载到body下面 需要使用全局样式 去掉scodoped
+//挂载到body下面 需要使用全局样式 去掉scodope属性
+.ai-dialog-container {
+  height: 100%;
+}
 .el-dialog {
   border-radius: 20px;
   height: 852px;

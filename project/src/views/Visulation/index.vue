@@ -14,6 +14,7 @@
       </section>
       <section class="itemcenter">
         <h2>地图展示</h2>
+        <mapPage></mapPage>
       </section>
       <section class="itemright">
         <itemPage>
@@ -28,6 +29,7 @@
 </template>
 
 <script>
+import mapPage from "./components/mapPage.vue";
 import itemPage from "./components/itemPage.vue";
 import itemOne from "./components/itemOne.vue";
 import itemTwo from "./components/itemTwo.vue";
@@ -44,6 +46,7 @@ export default {
     itemTwo,
     itemThree,
     itemFour,
+    mapPage,
   },
   created() {},
   mounted() {},

@@ -78,6 +78,27 @@ export const myPlugin = {
                 myChart.resize();
               });
             },
+            map(id, data) {
+              echarts.registerMap("china", data);
+              var myChart = echarts.init(document.getElementById(id));
+              myChart.setOption({
+                geo: {
+                  map: "china",
+                  itemStyle: {
+                    areaColor: "#0099ff", //区域颜色
+                    borderColor: "#00ffff", //边框颜色
+                    shadowColor: "rgba(230,130,70,0.5)", //阴影颜色
+                    shadowBlur: 10, //阴影模糊程度
+                    emphasis: {
+                      focus: "self", //聚焦自身,其他区域不聚焦
+                    },
+                  },
+                },
+              });
+              window.addEventListener("resize", function () {
+                myChart.resize();
+              });
+            },
           };
         },
         set() {},

@@ -1,13 +1,36 @@
 <template>
-  <div class="map"></div>
+  <div id="map"></div>
 </template>
 
 <script>
-import { chinaData } from "../../../../public/map/chinaData.js";
+//http://localhost:5173/
+import axios from "axios";
 export default {
   name: "mapPage",
-  mounted() {},
+  data() {
+    return {
+      chinaData: {},
+    };
+  },
+  created() {
+    this.getChinaData();
+  },
+  methods: {
+    async getChinaData() {
+      try {
+        const res = await axios.get("http://localhost:5173/map/china.json");
+        this.chinaData = res;
+        this.$myChart.map("map", this.chinaData.data);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+#map {
+  height: 10.5rem;
+}
+</style>
